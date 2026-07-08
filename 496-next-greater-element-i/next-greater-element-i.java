@@ -15,15 +15,26 @@ class Solution{
                 }
                 st.push(nums2[i]);
         }
-
-        for(int i=0; i<nums1.length; i++){
-            for(int j=0; j<nums2.length; j++){
-                if (nums2[j] ==nums1[i]){
-                    ans[i]= temp[j];
-                    break;
-                }
-            }
+        
+        //O(logn)
+        HashMap<Integer, Integer> mp= new HashMap<>();
+        for(int i=0; i< temp.length; i++){
+            mp.put(nums2[i], temp[i]);
         }
+        for(int i=0; i< nums1.length; i++){
+            ans[i]= mp.get(nums1[i]);
+        }
+
+
+        // again O(n1 * n2)
+        // for(int i=0; i<nums1.length; i++){
+        //     for(int j=0; j<nums2.length; j++){
+        //         if (nums2[j] ==nums1[i]){
+        //             ans[i]= temp[j];
+        //             break;
+        //         }
+        //     }
+        // }
         return ans;
     }
 }
